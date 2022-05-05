@@ -1,0 +1,28 @@
+INFO: Time: 180, Delay: 100
+INFO: Number of quanta set to 1800.
+INFO: Number of events configured num_fds=2
+INFO: Process 9428 finished with status 0
+INFO: The process has completed all quantums.
+INFO: Process 9873 finished with status 0
+INFO: The process has completed all quantums.
+INFO: Process 9881 finished with status 0
+INFO: The process has completed all quantums.
+INFO: Process 9883 finished with status 0
+INFO: The process has completed all quantums.
+INFO: Process 9884 finished with status 0
+INFO: The process has completed all quantums.
+INFO: Process 9885 finished with status 0
+INFO: The process has completed all quantums.
+INFO: Process 9886 finished with status 0
+INFO: The process has completed all quantums.
+INFO: Process 9887 finished with status 0
+INFO: The process has completed all quantums.
+INFO: Process 9888 finished with status 0
+INFO: The process has completed all quantums.
+INFO: Process 9889 finished with status 0
+INFO: The process has completed all quantums.
+INFO: Process 9890 finished with status 0
+INFO: The process has completed all quantums.
+INFO: Process 9892 finished with status 0
+INFO: The process has completed all quantums.
+PMU_COUNTS:	790006589877	1619205006913

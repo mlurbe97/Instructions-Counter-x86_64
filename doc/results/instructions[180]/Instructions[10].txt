@@ -1,0 +1,6 @@
+INFO: Time: 180, Delay: 100
+INFO: Number of quanta set to 1800.
+INFO: Number of events configured num_fds=2
+INFO: Process 10250 finished with status 0
+INFO: The process has completed all quantums.
+PMU_COUNTS:	758083454370	779666954202

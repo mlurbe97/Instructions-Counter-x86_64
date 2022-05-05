@@ -1,0 +1,9 @@
+char *bench_Names [] = {
+	"perlbench checkspam","bzip2","gcc","mcf","gobmk","hmmer","sjeng","libquantum",//0--7
+	"h264ref","omnetpp","astar","xalancbmk","bwaves","gamess","milc","zeusmp",//8--15
+	"gromacs","cactusADM","leslie3d","namd","microbench","soplex","povray","GemsFDTD",//16--23
+	"lbm","perlbench diffmail","calculix","AES-XTS","Text Compression","Image Compression","Navigation","HTML5",//24--31
+	"SQLite","PDF Rendering","Text Rendering","Clang","Camera","N-Body Physics","Rigid Body Physics","Gaussian Blur",//32--39
+	"Face Detection","Horizon Detection","Image Inpainting","HDR","Ray Tracing","Structure from Motion","Speech Recognition","Machine Learning"//40--47
+	
+};
