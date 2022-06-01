@@ -8,7 +8,7 @@
 helpFunction()
 {
    echo ""
-   echo "usage: sudo ./run.sh -t time [Number in seconds] -w workloadArray [a->SPEC 2006 all & microbenchmark b->Geekbench5 c->SPEC-ALL d->custom_workload] -c num_cores -f cpu_freq [default=2.50 GHz] s-> selected_workload [0-26:30-55]"
+   echo "usage: sudo ./run.sh -t time [Number in seconds] -w workloadArray [a->SPEC 2006 & microbenchmark b->Geekbench5 c->SPEC 2017 d->SPEC-ALL & microbenchmark e->All f->custom_workload] -c num_cores -f cpu_freq [default=2.50 GHz] s-> selected_workload [0-26:30-55]"
    exit 1 # Exit script after printing help
 }
 
@@ -53,23 +53,29 @@ fi
 case "$ARRAY" in 
 
     #case 1 
-    "a") workloadArray="0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26" ;;## SPEC 2006 all & microbenchmark.
+    "a") workloadArray="0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26" ;;## SPEC 2006 & microbenchmark.
 
     #case 2 
     "b") workloadArray="27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47" ;;# Geekbench5.
-
+    
     #case 3 
-    "c") workloadArray="0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47" ;;# All SPEC 2006 & microbenchmark & Geekbench.
+    "c") workloadArray="48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72" ;;# SPEC 2017.
     
     #case 4
-    "d") workloadArray=$CUSTOM_APP ;;
-
+    "d") workloadArray="0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72" ;;# SPEC 2006 & 2017 & microbenchmark.
+    
     #case 5
+    "e") workloadArray="0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72" ;;# All.
+    
+    #case 6
+    "f") workloadArray=$CUSTOM_APP ;;
+
+    #case 7
     *) echo "ERROR: Invalid entry for array of benckmarks."
       helpFunction;; 
 esac
 
-OUTDIR=$HOME/working_dir/Instructions_counter_x86_64_res/instructions[${TIME}]
+OUTDIR=/home/malursem/working_dir/Instructions_counter_x86_64_res/instructions[${TIME}]
 
 # if rm -rf $OUTDIR ; then
 #    echo "INFO: Directory for old results deleted."
