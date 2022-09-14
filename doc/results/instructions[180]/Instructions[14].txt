@@ -1,4 +1,0 @@
-INFO: Time: 180, Delay: 100
-INFO: Number of quanta set to 1800.
-INFO: Number of events configured num_fds=2
-PMU_COUNTS:	592365358680	557671130651
