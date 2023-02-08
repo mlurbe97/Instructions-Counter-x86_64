@@ -148,55 +148,55 @@ char *benchmarks[][200] = {
   {"Geekbench-5.4.4-Linux/geekbench5", "--arch", "64bit", "--section", "1", "--workload", "313", "--no-upload", NULL},
   //* SPEC CPU 2017 *//
 	// 48 -> perlbench_r checkspam
-	{"/home/malursem/spec2017/benchspec/CPU/500.perlbench_r/exe/perlbench_r_base.InitialTest-m64", "-I/home/malursem/spec2017/benchspec/CPU/500.perlbench_r/lib", "/home/malursem/spec2017/benchspec/CPU/500.perlbench_r/checkspam.pl", "2500", "5", "25", "11", "150", "1", "1", "1", "1", NULL},
+	{"spec2017-x86-bin/benchspec/CPU/500.perlbench_r/exe/perlbench_r_base.InitialTest-m64", "-Ispec2017-x86-bin/bin/lib", "spec2017-x86-bin/benchspec/CPU/500.perlbench_r/data/all/input/checkspam.pl", "2500", "5", "25", "11", "150", "1", "1", "1", "1", NULL},
 	// 49 -> gcc_r
-	{"/home/malursem/spec2017/benchspec/CPU/502.gcc_r/exe/cpugcc_r_base.InitialTest-m64", "/home/malursem/spec2017/benchspec/CPU/502.gcc_r/gcc-smaller.c", "-O3", "-fipa-pta", "-o", "gcc-smaller.opts-O3_-fipa-pta.s", NULL},
-	// 50 -> mcf_s
-	{"/home/malursem/spec2017/benchspec/CPU/505.mcf_r/exe/mcf_r_base.InitialTest-m64", "/home/malursem/spec2017/benchspec/CPU/605.mcf_s/inp.in", NULL},
-	// 51 -> omnetpp_s
-	{"/home/malursem/spec2017/benchspec/CPU/520.omnetpp_r/exe/omnetpp_r_base.InitialTest-m64", "-c", "General", "-r", "0", NULL},
-	// 52 -> xalancbmk_s
-	{"/home/malursem/spec2017/benchspec/CPU/523.xalancbmk_r/exe/cpuxalan_r_base.InitialTest-m64", "-v", "/home/malursem/spec2017/benchspec/CPU/623.xalancbmk_s/t5.xml", "/home/malursem/spec2017/benchspec/CPU/623.xalancbmk_s/xalanc.xsl", NULL},
-	// 53 -> x264_s
-	{"/home/malursem/spec2017/benchspec/CPU/525.x264_r/exe/x264_r_base.InitialTest-m64", "--pass", "1", "--stats", "x264_stats.log", "--bitrate", "1000", "--frames", "1000", "-o", "/home/malursem/spec2017/benchspec/CPU/625.x264_s/BuckBunny_New.264", "/home/malursem/spec2017/benchspec/CPU/625.x264_s/BuckBunny.yuv", "1280x720", NULL},
+	{"spec2017-x86-bin/benchspec/CPU/502.gcc_r/exe/cpugcc_r_base.InitialTest-m64", "spec2017-x86-bin/benchspec/CPU/502.gcc_r/data/refrate/input/gcc-smaller.c", "-O3", "-fipa-pta", "-o", "gcc-smaller.opts-O3_-fipa-pta.s", NULL},
+	// 50 -> mcf_r
+	{"spec2017-x86-bin/benchspec/CPU/505.mcf_r/exe/mcf_r_base.InitialTest-m64", "spec2017-x86-bin/benchspec/CPU/605.mcf_s/data/refrate/input/inp.in", NULL},
+	// 51 -> omnetpp_r
+	{"spec2017-x86-bin/benchspec/CPU/520.omnetpp_r/exe/omnetpp_r_base.InitialTest-m64", "-c", "General", "-r", "0", NULL},
+	// 52 -> xalancbmk_r
+	{"spec2017-x86-bin/benchspec/CPU/523.xalancbmk_r/exe/cpuxalan_r_base.InitialTest-m64", "-v", "spec2017-x86-bin/benchspec/CPU/623.xalancbmk_s/data/refrate/input/t5.xml", "spec2017-x86-bin/benchspec/CPU/623.xalancbmk_s/data/refrate/input/xalanc.xsl", NULL},
+	// 53 -> x264_r
+	{"spec2017-x86-bin/benchspec/CPU/525.x264_r/exe/x264_r_base.InitialTest-m64", "--pass", "1", "--stats", "x264_stats.log", "--bitrate", "1000", "--frames", "1000", "-o", "spec2017-x86-bin/benchspec/CPU/625.x264_s/BuckBunny_New.264", "spec2017-x86-bin/benchspec/CPU/625.x264_s/BuckBunny.yuv", "1280x720", NULL},
 	// 54 -> deepsjeng_r
-	{"/home/malursem/spec2017/benchspec/CPU/538.imagick_r/exe/imagick_r_base.InitialTest-m64", "/home/malursem/spec2017/benchspec/CPU/531.deepsjeng_r/ref.txt", NULL},
-	// 55 -> leela_s
-	{"/home/malursem/spec2017/benchspec/CPU/541.leela_r/exe/leela_r_base.InitialTest-m64", "/home/malursem/spec2017/benchspec/CPU/641.leela_s/ref.sgf", NULL},
-	// 56 -> exchange2_s
-	{"/home/malursem/spec2017/benchspec/CPU/548.exchange2_r/exe/exchange2_r_base.InitialTest-m64", "6", NULL},
+	{"spec2017-x86-bin/benchspec/CPU/538.imagick_r/exe/imagick_r_base.InitialTest-m64", "spec2017-x86-bin/benchspec/CPU/531.deepsjeng_r/ref.txt", NULL},
+	// 55 -> leela_r
+	{"spec2017-x86-bin/benchspec/CPU/541.leela_r/exe/leela_r_base.InitialTest-m64", "spec2017-x86-bin/benchspec/CPU/641.leela_s/ref.sgf", NULL},
+	// 56 -> exchange2_r
+	{"spec2017-x86-bin/benchspec/CPU/548.exchange2_r/exe/exchange2_r_base.InitialTest-m64", "6", NULL},
 	// 57 -> xz_r 1
-	{"/home/malursem/spec2017/benchspec/CPU/557.xz_r/exe/xz_r_base.InitialTest-m64", "/home/malursem/spec2017/benchspec/CPU/557.xz_r/cld.tar.xz", "160", "19cf30ae51eddcbefda78dd06014b4b96281456e078ca7c13e1c0c9e6aaea8dff3efb4ad6b0456697718cede6bd5454852652806a657bb56e07d61128434b474", "59796407", "61004416", "6", NULL},
+	{"spec2017-x86-bin/benchspec/CPU/557.xz_r/exe/xz_r_base.InitialTest-m64", "spec2017-x86-bin/benchspec/CPU/557.xz_r/cld.tar.xz", "160", "19cf30ae51eddcbefda78dd06014b4b96281456e078ca7c13e1c0c9e6aaea8dff3efb4ad6b0456697718cede6bd5454852652806a657bb56e07d61128434b474", "59796407", "61004416", "6", NULL},
 	// 58 -> bwaves_r
-	{"/home/malursem/spec2017/benchspec/CPU/503.bwaves_r/exe/bwaves_r_base.InitialTest-m64", NULL},
+	{"spec2017-x86-bin/benchspec/CPU/503.bwaves_r/exe/bwaves_r_base.InitialTest-m64", NULL},
 	// 59 -> cactuBSSN_r
-	{"/home/malursem/spec2017/benchspec/CPU/507.cactuBSSN_r/exe/cactusBSSN_r_base.InitialTest-m64", "/home/malursem/spec2017/benchspec/CPU/507.cactuBSSN_r/spec_ref.par", NULL},
+	{"spec2017-x86-bin/benchspec/CPU/507.cactuBSSN_r/exe/cactusBSSN_r_base.InitialTest-m64", "spec2017-x86-bin/benchspec/CPU/507.cactuBSSN_r/spec_ref.par", NULL},
 	// 60 -> lbm_r
-	{"/home/malursem/spec2017/benchspec/CPU/519.lbm_r/exe/lbm_r_base.InitialTest-m64", "3000", "reference.dat", "0", "0", "/home/malursem/spec2017/benchspec/CPU/519.lbm_r/100_100_130_ldc.of", NULL},
-	// 61 -> wrf_s
-	{"/home/malursem/spec2017/benchspec/CPU/521.wrf_r/exe/wrf_r_base.InitialTest-m64", NULL},
+	{"spec2017-x86-bin/benchspec/CPU/519.lbm_r/exe/lbm_r_base.InitialTest-m64", "3000", "reference.dat", "0", "0", "spec2017-x86-bin/benchspec/CPU/519.lbm_r/100_100_130_ldc.of", NULL},
+	// 61 -> wrf_r
+	{"spec2017-x86-bin/benchspec/CPU/521.wrf_r/exe/wrf_r_base.InitialTest-m64", NULL},
 	// 62 -> imagick_r
-	{"/home/malursem/spec2017/benchspec/CPU/538.imagick_r/exe/imagick_r_base.InitialTest-m64", "-limit", "disk", "0", "/home/malursem/spec2017/benchspec/CPU/538.imagick_r/refrate_input.tga", "-edge", "41", "-resample", "181%", "-emboss", "31", "-colorspace", "YUV", "-mean-shift", "19x19+15%", "-resize", "30%", "refrate_output.tga", NULL},
-	// 63 -> nab_s
-	{"/home/malursem/spec2017/benchspec/CPU/544.nab_r/exe/nab_r_base.InitialTest-m64", "3j1n", "20140317", "220", NULL},
+	{"spec2017-x86-bin/benchspec/CPU/538.imagick_r/exe/imagick_r_base.InitialTest-m64", "-limit", "disk", "0", "spec2017-x86-bin/benchspec/CPU/538.imagick_r/refrate_input.tga", "-edge", "41", "-resample", "181%", "-emboss", "31", "-colorspace", "YUV", "-mean-shift", "19x19+15%", "-resize", "30%", "refrate_output.tga", NULL},
+	// 63 -> nab_r
+	{"spec2017-x86-bin/benchspec/CPU/544.nab_r/exe/nab_r_base.InitialTest-m64", "3j1n", "20140317", "220", NULL},
 	// 64 -> fotonik3d_r
-	{"/home/malursem/spec2017/benchspec/CPU/549.fotonik3d_r/exe/fotonik3d_r_base.InitialTest-m64", NULL},
+	{"spec2017-x86-bin/benchspec/CPU/549.fotonik3d_r/exe/fotonik3d_r_base.InitialTest-m64", NULL},
 	// 65 -> roms_r
-	{"/home/malursem/spec2017/benchspec/CPU/554.roms_r/exe/roms_r_base.InitialTest-m64", NULL},
+	{"spec2017-x86-bin/benchspec/CPU/554.roms_r/exe/roms_r_base.InitialTest-m64", NULL},
 	// 66 -> namd_r
-	{"/home/malursem/spec2017/benchspec/CPU/508.namd_r/exe/namd_r_base.InitialTest-m64", "--input", "/home/malursem/spec2017/benchspec/CPU/508.namd_r/apoa1.input", "--output", "apoa1.ref.output", "--iterations", "65", NULL},
+	{"spec2017-x86-bin/benchspec/CPU/508.namd_r/exe/namd_r_base.InitialTest-m64", "--input", "spec2017-x86-bin/benchspec/CPU/508.namd_r/apoa1.input", "--output", "apoa1.ref.output", "--iterations", "65", NULL},
 	// 67 -> parest_r
-	{"/home/malursem/spec2017/benchspec/CPU/510.parest_r/exe/parest_r_base.InitialTest-m64", "/home/malursem/spec2017/benchspec/CPU/510.parest_r/ref.prm", NULL},
+	{"spec2017-x86-bin/benchspec/CPU/510.parest_r/exe/parest_r_base.InitialTest-m64", "spec2017-x86-bin/benchspec/CPU/510.parest_r/ref.prm", NULL},
 	// 68 -> povray_r
-	{"/home/malursem/spec2017/benchspec/CPU/511.povray_r/exe/povray_r_base.InitialTest-m64", "/home/malursem//spec2017/benchspec/CPU/511.povray_r/SPEC-benchmark-ref.ini", NULL},
+	{"spec2017-x86-bin/benchspec/CPU/511.povray_r/exe/povray_r_base.InitialTest-m64", "/home/malursem//spec2017/benchspec/CPU/511.povray_r/SPEC-benchmark-ref.ini", NULL},
 	// 69 -> xz_r 2
-	{"/home/malursem/spec2017/benchspec/CPU/557.xz_r/exe/xz_r_base.InitialTest-m64", "/home/malursem/spec2017/benchspec/CPU/557.xz_r/cpu2006docs.tar.xz", "250", "055ce243071129412e9dd0b3b69a21654033a9b723d874b2015c774fac1553d9713be561ca86f74e4f16f22e664fc17a79f30caa5ad2c04fbc447549c2810fae", "23047774", "23513385", "6e", NULL },
+	{"spec2017-x86-bin/benchspec/CPU/557.xz_r/exe/xz_r_base.InitialTest-m64", "spec2017-x86-bin/benchspec/CPU/557.xz_r/cpu2006docs.tar.xz", "250", "055ce243071129412e9dd0b3b69a21654033a9b723d874b2015c774fac1553d9713be561ca86f74e4f16f22e664fc17a79f30caa5ad2c04fbc447549c2810fae", "23047774", "23513385", "6e", NULL },
 	// 70 -> xz_r 3
-	{"/home/malursem/spec2017/benchspec/CPU/557.xz_r/exe/xz_r_base.InitialTest-m64", "/home/malursem/spec2017/benchspec/CPU/557.xz_r/input.combined.xz", "250", "a841f68f38572a49d86226b7ff5baeb31bd19dc637a922a972b2e6d1257a890f6a544ecab967c313e370478c74f760eb229d4eef8a8d2836d233d3e9dd1430bf", "40401484", "41217675", "7", NULL },
+	{"spec2017-x86-bin/benchspec/CPU/557.xz_r/exe/xz_r_base.InitialTest-m64", "spec2017-x86-bin/benchspec/CPU/557.xz_r/input.combined.xz", "250", "a841f68f38572a49d86226b7ff5baeb31bd19dc637a922a972b2e6d1257a890f6a544ecab967c313e370478c74f760eb229d4eef8a8d2836d233d3e9dd1430bf", "40401484", "41217675", "7", NULL },
 	// 71 -> exchange2_r
-	{"/home/malursem/spec2017/benchspec/CPU/548.exchange2_r/exe/exchange2_r_base.InitialTest-m64","6",NULL},
+	{"spec2017-x86-bin/benchspec/CPU/548.exchange2_r/exe/exchange2_r_base.InitialTest-m64","6",NULL},
 	// 72 -> perlbench_r diffmail
-	{"/home/malursem/spec2017/benchspec/CPU/500.perlbench_r/exe/perlbench_r_base.InitialTest-m64", "-I/home/malursem/spec2017/benchspec/CPU/500.perlbench_r/lib", "/home/malursem/spec2017/benchspec/CPU/500.perlbench_r/diffmail.pl", "4", "800", "10", "17", "19", "300", NULL},
+	{"spec2017-x86-bin/benchspec/CPU/500.perlbench_r/exe/perlbench_r_base.InitialTest-m64", "-Ispec2017-x86-bin/benchspec/CPU/500.perlbench_r/lib", "spec2017-x86-bin/benchspec/CPU/500.perlbench_r/diffmail.pl", "4", "800", "10", "17", "19", "300", NULL},
 };
 
 /*************************************************************
@@ -460,9 +460,9 @@ int main(int argc, char **argv) {
             break;
           case 34:
             close(0);
-            fitxer = fopen("/home/malursem/spec2017/benchspec/CPU/503.bwaves_r/bwaves_1.in", "r");
+            fitxer = fopen("spec2017-x86-bin/benchspec/CPU/503.bwaves_r/bwaves_1.in", "r");
             if(fitxer == NULL) {
-            fprintf(stderr,"ERROR. The file could not be opened: /home/malursem/spec2017/benchspec/CPU/503.bwaves_r/bwaves_1.in.\n");
+            fprintf(stderr,"ERROR. The file could not be opened: spec2017-x86-bin/benchspec/CPU/503.bwaves_r/bwaves_1.in.\n");
             return -1;
             }
             break;
@@ -473,9 +473,9 @@ int main(int argc, char **argv) {
 
           case 54:
             close(0);
-            fitxer = fopen("/home/malursem/spec2017/benchspec/CPU/554.roms_r/ocean_benchmark2.in.x", "r");
+            fitxer = fopen("spec2017-x86-bin/benchspec/CPU/554.roms_r/ocean_benchmark2.in.x", "r");
             if(fitxer == NULL) {
-            fprintf(stderr,"ERROR. The file could not be opened: /home/malursem/spec2017/benchspec/CPU/554.roms_r/ocean_benchmark2.in.x.\n");
+            fprintf(stderr,"ERROR. The file could not be opened: spec2017-x86-bin/benchspec/CPU/554.roms_r/ocean_benchmark2.in.x.\n");
             return -1;
             }
             break;

@@ -92,6 +92,8 @@ fi
 # Begin script in case all parameters are correct
 { sudo ./start_experiments.sh -c $NUM_CORES -f $CPU_FREQ; }
 
+export SPECPERLLIB=/home/malursem/spec2017/bin/lib:/home/malursem/spec2017/bin
+
 for workload in $workloadArray
 do
 	sudo ./Instructions_counter_x86_64 -t $TIME -A $workload 2>> $OUTDIR/Instructions[${workload}].txt

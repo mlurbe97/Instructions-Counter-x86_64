@@ -29,10 +29,20 @@ if workloadArray == 'a':
     ini = 0
     fin = 0
 elif workloadArray =='b':
-    print("Selected Benchmarks: ALL\n")
+    print("Selected Benchmarks: SPEC CPU 2006 & microbenchmark & Geekbench\n")
     benchmarks = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47]
     ini = 0
     fin = 0
+elif workloadArray =='c':
+    print("Selected Benchmarks: ALL & SPEC CPU 2017\n")
+    benchmarks = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72]
+    ini = 0
+    fin = 0
+elif workloadArray == 'd':
+    print("Selected Benchmarks: SPEC CPU 2017\n")
+    benchmarks = [48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72]
+    ini = 48
+    fin = 72
 else:
     print("Array value incorrect.")
     sys.exit(1)
@@ -42,7 +52,9 @@ benchmarksNames = ["perlbench checkspam","bzip2","gcc","mcf","gobmk","hmmer","sj
 "milc","zeusmp","gromacs","cactusADM","leslie3d","namd","microbench","soplex","povray","GemsFDTD","lbm",
 "perlbench diffmail","calculix","AES-XTS","Text Compression","Image Compression","Navigation","HTML5","SQLite",
 "PDF Rendering","Text Rendering","Clang","Camera","N-Body Physics","Rigid Body Physics","Gaussian Blur","Face Detection",
-"Horizon Detection","Image Inpainting","HDR","Ray Tracing","Structure from Motion","Speech Recognition","Machine Learning"]
+"Horizon Detection","Image Inpainting","HDR","Ray Tracing","Structure from Motion","Speech Recognition","Machine Learning",
+"perlbench_r checkspam","gcc_r","mcf_s","omnetpp_s","xalancbmk_s","x264_s","deepsjeng_r","leela_s","exchange2_s","xz_r 1","bwaves_r","cactuBSSN_r",
+"lbm_r","wrf_s","imagick_r","nab_s","fotonik3d_r","roms_r","namd_r","parest_r","povray_r","xz_r 2","xz_r 3","exchange2_r","perlbench_r diffmail"]
 
 for bench in benchmarks:
     existe = 0
