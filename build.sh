@@ -6,9 +6,9 @@
 ## Year: 2022
 
 rm -rf ../libpfm4/perf_examples/Instructions_counter_x86_64*
-dos2unix src/scripts/*
-chmod +x src/scripts/*
-cp -rf *src/scripts/* ../
+dos2unix src/scripts/* src/instructions_to_C_array.py
+chmod +x src/scripts/* src/instructions_to_C_array.py
+cp -rf *src/scripts/* src/instructions_to_C_array.py ../
 
 if cp src/*.h src/Makefile src/Instructions_counter_x86_64.c ../libpfm4/perf_examples/ ; then
 	if cd ../libpfm4/perf_examples/ ; then

@@ -237,6 +237,6 @@ This program counts the number of instructions an application executes on a give
 
 ## 6. Instructions to C array
 
-The program in folder [doc/](https://github.com/mlurbe97/Instructions-Counter-x86_64/blob/master/doc/) contains the program [instructions_to_C_array.py](https://github.com/mlurbe97/Instructions-Counter-x86_64/blob/master/doc/instructions_to_C_array.py) that converts the output instructions from the main program to a C array, useful to use with my implementations of Linux Schedulers.
+Program [src/instructions_to_C_array.py](src/instructions_to_C_array.py) converts the output instructions from the main program extracted for each benchmark to a C array, useful to use with my implementations of Linux Schedulers.
 
 [Back to top](#Readme-Content)

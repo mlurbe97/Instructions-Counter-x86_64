@@ -15,7 +15,7 @@ print("\nInstructions Counter x86_64.\nAuthor: Manel Lurbe Sempere\ne-mail: malu
 
 if numargs != 4:
     print("Missing arguments")
-    print("Usage: ./instructions_to_C_array.py Time workloadArray [a->2006 & microbenchmark b->2006 & microbenchmark & geekbench5] Results_path")
+    print("Usage: ./instructions_to_C_array.py Time workloadArray [a->GAPS b->Geekbench5 c->SPEC ALL] Results_path")
     sys.exit(1)
 
 time = arguments[1]
@@ -24,37 +24,31 @@ res_path = arguments[3]
 ini = 0
 fin = 0
 if workloadArray == 'a':
-    print("Selected Benchmarks: SPEC CPU 2006 & microbenchmark\n")
-    benchmarks = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]
-    ini = 0
-    fin = 0
+    print("Selected Benchmarks: GAPS\n")
+    benchmarks = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    benchmarksNames = ["bfs_g_24","bfs_u_24","bc_g_24","bc_u_24","cc_g_24","cc_u_24","pr_g_24","pr_u_24",##0--7
+        "sssp_g_24","sssp_u_24","tc_g_24","tc_u_24","cc_sv_g_24","cc_sv_u_24","pr_spmv_g_24","pr_spmv_u_24"]##8--15
 elif workloadArray =='b':
-    print("Selected Benchmarks: SPEC CPU 2006 & microbenchmark & Geekbench\n")
-    benchmarks = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47]
-    ini = 0
-    fin = 0
+    print("Selected Benchmarks: Geekbench5\n")
+    benchmarks = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+    benchmarksNames = ["AES-XTS","Text Compression","Image Compression","Navigation","HTML5",##0--4
+	    "SQLite","PDF Rendering","Text Rendering","Clang","Camera","N-Body Physics","Rigid Body Physics","Gaussian Blur",##5--12
+	    "Face Detection","Horizon Detection","Image Inpainting","HDR","Ray Tracing","Structure from Motion","Speech Recognition","Machine Learning"]##13--20
 elif workloadArray =='c':
-    print("Selected Benchmarks: ALL & SPEC CPU 2017\n")
-    benchmarks = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72]
-    ini = 0
-    fin = 0
-elif workloadArray == 'd':
-    print("Selected Benchmarks: SPEC CPU 2017\n")
-    benchmarks = [48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72]
-    ini = 48
-    fin = 72
+    print("Selected Benchmarks: SPEC CPU 2006\n")
+    benchmarks = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+    benchmarksNames = ["perlbench checkspam","bzip2","gcc","mcf","gobmk","hmmer","sjeng","libquantum",##0--7
+        "h264ref","omnetpp","astar","xalancbmk","bwaves","gamess","milc","zeusmp",##8--15
+        "gromacs","cactusADM","leslie3d","namd","soplex","povray","GemsFDTD",##16--22
+        "lbm","perlbench diffmail","calculix","perlbench_r checkspam","gcc_r",##23--27
+        "mcf_r","omnetpp_r","xalancbmk_r","x264_r","deepsjeng_r","leela_r",##28--33
+        "exchange2_r","xz_r 1","bwaves_r","cactuBSSN_r","lbm_r","wrf_r","imagick_r",##34--40
+        "nab_r","fotonik3d_r","roms_r","namd_r","parest_r","povray_r","xz_r 2",##41--47
+        "xz_r 3","exchange2_r","perlbench_r diffmail"]##48--50
 else:
     print("Array value incorrect.")
     sys.exit(1)
 listaInstructions=[]
-
-benchmarksNames = ["perlbench checkspam","bzip2","gcc","mcf","gobmk","hmmer","sjeng","libquantum","h264ref","omnetpp","astar","xalancbmk","bwaves","gamess",
-"milc","zeusmp","gromacs","cactusADM","leslie3d","namd","microbench","soplex","povray","GemsFDTD","lbm",
-"perlbench diffmail","calculix","AES-XTS","Text Compression","Image Compression","Navigation","HTML5","SQLite",
-"PDF Rendering","Text Rendering","Clang","Camera","N-Body Physics","Rigid Body Physics","Gaussian Blur","Face Detection",
-"Horizon Detection","Image Inpainting","HDR","Ray Tracing","Structure from Motion","Speech Recognition","Machine Learning",
-"perlbench_r checkspam","gcc_r","mcf_s","omnetpp_s","xalancbmk_s","x264_s","deepsjeng_r","leela_s","exchange2_s","xz_r 1","bwaves_r","cactuBSSN_r",
-"lbm_r","wrf_s","imagick_r","nab_s","fotonik3d_r","roms_r","namd_r","parest_r","povray_r","xz_r 2","xz_r 3","exchange2_r","perlbench_r diffmail"]
 
 for bench in benchmarks:
     existe = 0
@@ -75,8 +69,8 @@ for bench in benchmarks:
 
 escribir_array = open("array["+time+"].txt","w")
 escribir_names = open("array_names["+time+"].txt","w")
-escribir_array.write("unsigned long int bench_Instructions [] = {\n\t")
-escribir_names.write("char *bench_Names [] = {\n\t")
+escribir_array.write("unsigned long int bench_Instructions [NUM_BENCHMARKS] = {\n\t")
+escribir_names.write("char *bench_Names [NUM_BENCHMARKS] = {\n\t")
 
 not_working = open("not_working["+time+"].txt","w")
 not_working.write("Benchmarks not working\n")
