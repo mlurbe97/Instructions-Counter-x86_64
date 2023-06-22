@@ -23,11 +23,20 @@ do
 done
 
 # Print helpFunction in case parameters are empty
-if [ -z "$CPU_FREQ" ] || [ -z "$NUM_CORES" ]
+if [ -z "$CPU_FREQ" ]
 then
-   echo "Missing arguments.";
+   echo "Missing argument CPU_FREQ.";
    helpFunction
 fi
+
+if [ -z "$NUM_CORES" ]
+then
+   NUM_CORES=$(nproc)
+   echo "WARN: Using default NUM_CORES=" $NUM_CORES;
+fi
+
+{ sudo ./enable_perf.sh ; }
+{ sudo ./mod_msr.sh -n $NUM_CORES; }
 
 ONE=1
 let num_procesors=$NUM_CORES-$ONE

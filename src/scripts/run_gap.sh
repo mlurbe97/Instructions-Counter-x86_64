@@ -8,7 +8,7 @@
 helpFunction()
 {
    echo ""
-   echo "usage: sudo ./run.sh -k core_type [0->P_core 1->E_core] -t time [Number in seconds] -w workloadArray [a->All b->custom_workload] -c num_cores -f cpu_freq [default=2.50 GHz] s-> selected_workload [0-26:30-55]"
+   echo "usage: sudo ./run.sh -k core_type [0->P_core 1->E_core] -t time [Number in seconds] -w workloadArray [a->All b->custom_workload] -c num_cores -f cpu_freq [default=3.00 GHz] s-> selected_workload [0-26:30-55]"
    exit 1 # Exit script after printing help
 }
 
@@ -40,13 +40,13 @@ fi
 
 if [ -z "$CPU_FREQ" ]
 then
-    CPU_FREQ="2.50 GHz"
+    CPU_FREQ="3.00 GHz"
     echo "WARN: Using default CPU_FREQ=" $CPU_FREQ;
 fi
 
 if [ -z "$CUSTOM_APP" ]
 then
-    CUSTOM_APP="20"
+    CUSTOM_APP="0"
 fi
 
 if [ -z "$NUM_CORES" ]
@@ -77,7 +77,7 @@ else
    echo "WARN: Failed to create directory for gap. It may already exist."
 fi
 
-OUTDIR=/home/malursem/working_dir/Instructions_counter_x86_64_res/speccpu/$CORE_TYPE/
+OUTDIR=/home/malursem/working_dir/Instructions_counter_x86_64_res/gap/$CORE_TYPE/
 
 if mkdir $OUTDIR ; then
    echo "INFO: Directory for core type created."
@@ -85,7 +85,7 @@ else
    echo "WARN: Failed to create directory for core type. It may already exist."
 fi
 
-OUTDIR=/home/malursem/working_dir/Instructions_counter_x86_64_res/gap/instructions[${TIME}]
+OUTDIR=/home/malursem/working_dir/Instructions_counter_x86_64_res/gap/$CORE_TYPE/instructions[${TIME}]
 
 if mkdir $OUTDIR ; then
    echo "INFO: Directory for new results created."
@@ -98,6 +98,7 @@ fi
 
 for workload in $workloadArray
 do
+   echo "Launching workload number: " $workload
 	sudo ./Instructions_counter_x86_64 -k $CORE_TYPE -t $TIME -A $workload 2>> $OUTDIR/Instructions[${workload}].txt
 done;
 

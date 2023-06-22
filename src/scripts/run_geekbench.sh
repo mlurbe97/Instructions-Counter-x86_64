@@ -8,7 +8,7 @@
 helpFunction()
 {
    echo ""
-   echo "usage: sudo ./run.sh -k core_type [0->P_core 1->E_core] -t time [Number in seconds] -w workloadArray [a->Geekbench5 b->custom_workload] -c num_cores -f cpu_freq [default=2.50 GHz] s-> selected_workload [0-20]"
+   echo "usage: sudo ./run.sh -k core_type [0->P_core 1->E_core] -t time [Number in seconds] -w workloadArray [a->Geekbench5 b->custom_workload] -c num_cores -f cpu_freq [default=3.00 GHz] s-> selected_workload [0-20]"
    exit 1 # Exit script after printing help
 }
 
@@ -40,13 +40,13 @@ fi
 
 if [ -z "$CPU_FREQ" ]
 then
-    CPU_FREQ="2.50 GHz"
+    CPU_FREQ="3.00 GHz"
     echo "WARN: Using default CPU_FREQ=" $CPU_FREQ;
 fi
 
 if [ -z "$CUSTOM_APP" ]
 then
-    CUSTOM_APP="20"
+    CUSTOM_APP="0"
 fi
 
 if [ -z "$NUM_CORES" ]
@@ -77,7 +77,7 @@ else
    echo "WARN: Failed to create directory for geekbench. It may already exist."
 fi
 
-OUTDIR=/home/malursem/working_dir/Instructions_counter_x86_64_res/speccpu/$CORE_TYPE/
+OUTDIR=/home/malursem/working_dir/Instructions_counter_x86_64_res/geekbench5/$CORE_TYPE/
 
 if mkdir $OUTDIR ; then
    echo "INFO: Directory for core type created."
@@ -85,7 +85,7 @@ else
    echo "WARN: Failed to create directory for core type. It may already exist."
 fi
 
-OUTDIR=/home/malursem/working_dir/Instructions_counter_x86_64_res/geekbench5/instructions[${TIME}]
+OUTDIR=/home/malursem/working_dir/Instructions_counter_x86_64_res/geekbench5/$CORE_TYPE/instructions[${TIME}]
 
 if mkdir $OUTDIR ; then
    echo "INFO: Directory for new results created."
@@ -98,6 +98,7 @@ fi
 
 for workload in $workloadArray
 do
+   echo "Launching workload number: " $workload
 	sudo ./Instructions_counter_x86_64 -k $CORE_TYPE -t $TIME -A $workload 2>> $OUTDIR/Instructions[${workload}].txt
 done;
 
