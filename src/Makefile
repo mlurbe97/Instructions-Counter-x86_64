@@ -58,10 +58,7 @@ PERF_EVENT_HDR=$(TOPDIR)/include/perfmon/pfmlib_perf_event.h
 LPC_UTILS=perf_util.o
 LPC_UTILS_HDR=perf_util.h
 
-TARGETS+=self self_basic self_count task task_attach_timeout syst \
-	notify_self notify_group task_smpl self_smpl_multi \
-	self_pipe syst_count task_cpu syst_smpl evt2raw \
-	branch_smpl Instructions_counter_x86_64
+TARGETS+=Instructions_counter_x86_64
 
 # Make rtop conditional on ncurses development package installed
 ifeq ($(shell /bin/echo -e '\#include <ncurses.h>\nint main(void) { return 0;}' | $(CC) -o /dev/null -xc - 2>/dev/null && echo -n yes), yes)

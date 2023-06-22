@@ -220,6 +220,7 @@ This program counts the number of instructions an application executes on a give
     chmod +x build.sh
     ./build.sh -b {bench}_BENCHMARKS
     ```
+
 - Run the scheduler.
     ```
     cd $HOME/working_dir/
