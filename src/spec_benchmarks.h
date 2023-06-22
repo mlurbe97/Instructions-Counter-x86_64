@@ -169,16 +169,16 @@ char *bench_Names [NUM_BENCHMARKS] = {
  **                 search_benchmark                        **
  *************************************************************/
 
-int search_benchmark(int prg,FILE **in_file) {
+int search_benchmark(int benchmark,FILE **in_file) {
     int res = 0;
     // Descriptors for those who have input for standard input
-        switch(prg) {
+        switch(benchmark) {
           case 4: // [Doesn't work]
             close(0);
-            in_file = fopen("CPU2006/445.gobmk/data/ref/input/13x13.tst", "r");
-            if (in_file == NULL) {
+            *in_file = fopen("CPU2006/445.gobmk/data/ref/input/13x13.tst", "r");
+            if (*in_file == NULL) {
               fprintf(stderr,"ERROR: The file could not be opened: CPU2006/445.gobmk/data/ref/input/13x13.tst.\n");
-              return -1;
+            res = -1;
             }
             break;
 
@@ -188,45 +188,45 @@ int search_benchmark(int prg,FILE **in_file) {
 
           case 13:
             close(0);
-            in_file = fopen("CPU2006/416.gamess/data/ref/input/h2ocu2+.gradient.config", "r");
-            if (in_file == NULL) {
+            *in_file = fopen("CPU2006/416.gamess/data/ref/input/h2ocu2+.gradient.config", "r");
+            if (*in_file == NULL) {
               fprintf(stderr,"ERROR: The file could not be opened: CPU2006/416.gamess/data/ref/input/h2ocu2+.gradient.config.\n");
-              return -1;
+              res = -1;
             }
             break;
 
           case 14:
             close(0);
-            in_file = fopen("CPU2006/433.milc/data/ref/input/su3imp.in", "r");
-            if (in_file == NULL) {
+            *in_file = fopen("CPU2006/433.milc/data/ref/input/su3imp.in", "r");
+            if (*in_file == NULL) {
               fprintf(stderr,"ERROR: The file could not be opened: CPU2006/433.milc/data/ref/input/su3imp.in.\n");
-              return -1;
+              res = -1;
             }
             break;
 
           case 18:
             close(0);
-            in_file = fopen("CPU2006/437.leslie3d/data/ref/input/leslie3d.in", "r");
-            if (in_file == NULL) {
+            *in_file = fopen("CPU2006/437.leslie3d/data/ref/input/leslie3d.in", "r");
+            if (*in_file == NULL) {
               fprintf(stderr,"ERROR: The file could not be opened: CPU2006/437.leslie3d/data/ref/input/leslie3d.in.\n");
-              return -1;
+              res = -1;
             }
             break;
 
           case 21:
             close(2);
-            in_file = fopen("povray.sal", "w");
-            if (in_file == NULL) {
+            *in_file = fopen("povray.sal", "w");
+            if (*in_file == NULL) {
               fprintf(stderr,"ERROR: The file could not be opened: povray.sal\n");
-              return -1;
+              res = -1;
             }
             break;
           case 36:
             close(0);
-            in_file = fopen("spec2017-x86-bin/benchspec/CPU/503.bwaves_r/bwaves_1.in", "r");
-            if(in_file == NULL) {
+            *in_file = fopen("spec2017-x86-bin/benchspec/CPU/503.bwaves_r/bwaves_1.in", "r");
+            if(*in_file == NULL) {
             fprintf(stderr,"ERROR. The file could not be opened: spec2017-x86-bin/benchspec/CPU/503.bwaves_r/bwaves_1.in.\n");
-            return -1;
+            res = -1;
             }
             break;
 
@@ -236,17 +236,18 @@ int search_benchmark(int prg,FILE **in_file) {
 
           case 43:
             close(0);
-            in_file = fopen("spec2017-x86-bin/benchspec/CPU/554.roms_r/ocean_benchmark2.in.x", "r");
-            if(in_file == NULL) {
+            *in_file = fopen("spec2017-x86-bin/benchspec/CPU/554.roms_r/ocean_benchmark2.in.x", "r");
+            if(*in_file == NULL) {
             fprintf(stderr,"ERROR. The file could not be opened: spec2017-x86-bin/benchspec/CPU/554.roms_r/ocean_benchmark2.in.x.\n");
-            return -1;
+            res = -1;
             }
             break;
         }
         close(1);
-        in_file = fopen("rundir/sal.log", "w");
+        *in_file = fopen("rundir/sal.log", "w");
         close(2);
-        in_file = fopen("rundir/err.log", "w");
+        *in_file = fopen("rundir/err.log", "w");
+        return res;
 }
 
 #endif

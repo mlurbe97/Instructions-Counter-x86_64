@@ -103,7 +103,7 @@ char *bench_Names [NUM_BENCHMARKS] = {
  **                 search_benchmark                        **
  *************************************************************/
 
-int search_benchmark(int prg,FILE **in_file) {
+int search_benchmark(int benchmark,FILE **in_file) {
     int res = 0;
     close(1);
     *in_file = fopen("rundir/sal.log", "w");

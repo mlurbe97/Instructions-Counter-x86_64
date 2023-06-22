@@ -25,9 +25,13 @@
 #include "perf_util.h"
 
 //Select only one include for benchmarks to compile with
-//#include "spec_benchmarks.h"
-//#include "geekbench_benchmarks.h"
-#include "gap_benchmarks.h"
+#ifdef GAP_BENCHMARKS
+  #include "gap_benchmarks.h"
+#elifdef GEEK_BENCHMARKS
+  #include "geekbench_benchmarks.h"
+#else // SPEC_BENCHMARKS
+  #include "spec_benchmarks.h"
+#endif
 
 // Intel Hybrid
 #include "Intel_Core.h"
@@ -37,6 +41,9 @@
  *************************************************************/
 typedef struct {
   char *events;
+  int max_quantums;
+  int benchmark;
+  int cpu_type;
   int delay;
   int pinned;
   int group;
@@ -150,7 +157,7 @@ int initialize_events() {
  *************************************************************/
 
 static void usage(void) {
-  fprintf(stdout,"usage: [PROGRAM] [-h] [-P] [-g] [-k core_type] [-t time (in seconds)] [-d delay (in milliseconds)] [-e cycles,instructions,event2,...] A prgA\n");
+  fprintf(stdout,"usage: [PROGRAM] [-h] [-P] [-g] [-k core_type] [-t time (in seconds)] [-d delay (in milliseconds)] [-e cycles,instructions,event2,...] A benchmark\n");
 }
 
 /*************************************************************
@@ -161,18 +168,17 @@ int main(int argc, char **argv) {
 
   printf("\nInstructions Counter x86_64.\nAuthor: Manel Lurbe Sempere\ne-mail: malursem@gap.upv.es\nYear: 2022\n");
 
-  int c, ret, temps=-1, q=0, i;
+  int c, ret, time=-1, q=0, i;
   pid_t pid;
-  int prg;
   cpu_set_t mask;
   int status, num_fds;
   FILE *in_file;
-  int max_quantums = -1;
-  int nucli = -1;
 
-  prg = -1;
+  options.benchmark = -1;
+  options.max_quantums = -1;
   options.verbose = 0;
   options.delay = 0;
+  options.cpu_type = -1;
 
   while ((c=getopt(argc, argv,"he:d:t:pvgPA:Q:k:")) != -1) {
     switch(c) {
@@ -192,19 +198,19 @@ int main(int argc, char **argv) {
       usage();
       exit(0);
     case 'A':
-      prg = atoi(optarg);
+      options.benchmark = atoi(optarg);
       break;
     case 't':
-      temps = atoi(optarg);
+      time = atoi(optarg);
       break;
     case 'v':
       options.verbose = 1;
       break;
     case 'Q':
-      max_quantums = atoi(optarg);
+      options.max_quantums = atoi(optarg);
       break;
     case 'k':
-        nucli = atoi(optarg);
+        options.cpu_type = atoi(optarg);
         break;
     default:
       fprintf(stderr, "ERROR: Unknown error\n");
@@ -220,24 +226,24 @@ int main(int argc, char **argv) {
     options.delay = 100;
   }
 
-  if (prg < 0) {
+  if (options.benchmark < 0) {
     fprintf(stderr, "ERROR: The process needs to be specified.\n");
     return -1;
   }
 
-  if (max_quantums < 0) {
-    if (temps < 0) {
+  if (options.max_quantums < 0) {
+    if (time < 0) {
       fprintf(stderr, "ERROR: Max time or quanta should be especified.\n");
       exit (-1);
     }
-    fprintf(stderr, "INFO: Time: %d, Delay: %d\n", temps, options.delay);
-    max_quantums = temps * 1000 / options.delay;
-    fprintf(stderr, "INFO: Number of quanta set to %d.\n", max_quantums);
+    fprintf(stderr, "INFO: Time: %d, Delay: %d\n", time, options.delay);
+    options.max_quantums = time * 1000 / options.delay;
+    fprintf(stderr, "INFO: Number of quanta set to %d.\n", options.max_quantums);
   } else {
-    fprintf(stderr, "INFO: Number of quanta defined to %d.\n", max_quantums);
+    fprintf(stderr, "INFO: Number of quanta defined to %d.\n", options.max_quantums);
   }
 
-  switch (nucli)
+  switch (options.cpu_type)
   {
   case 0://P-core
     CPU_ZERO(&mask);
@@ -269,12 +275,12 @@ int main(int argc, char **argv) {
 
       case 0: // Child
         // Descriptors for those who have input for standard input
-        if(search_benchmark(prg,&in_file) == -1)
+        if(search_benchmark(options.benchmark,&in_file) == -1)
         {
           return -1;
         }
-        execv(benchmarks[prg][0], benchmarks[prg]);
-        fprintf(stderr,"ERROR: Couldn't launch the program %d.\n", prg);
+        execv(benchmarks[options.benchmark][0], benchmarks[options.benchmark]);
+        fprintf(stderr,"ERROR: Couldn't launch the program %d.\n", options.benchmark);
         return -1;
 
       default:  // Parent                                                                               
@@ -291,14 +297,14 @@ int main(int argc, char **argv) {
           fprintf(stderr,"ERROR: command process %d exited too early with status %d\n", pid, WEXITSTATUS(status));
         }
     }
-    for (; q<max_quantums; q++) {
+    for (; q<options.max_quantums; q++) {
       ret = measure(&pid);
       if (ret) {
         fprintf(stderr, "INFO: The process has completed all quantums.\n");
         break;
       }
     }
-  } while (q < max_quantums-1);
+  } while (q < options.max_quantums-1);
   kill(pid, 9);
   // Print values for cycles and instructions executed before exiting the scheduler.
   fprintf(stderr, "PMU_COUNTS:");

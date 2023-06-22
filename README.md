@@ -218,20 +218,13 @@ This program counts the number of instructions an application executes on a give
     ```
     cd $HOME/working_dir/Instructions-Counter-x86_64/
     chmod +x build.sh
-    ./build.sh
+    ./build.sh -b {bench}_BENCHMARKS
     ```
 - Run the scheduler.
     ```
     cd $HOME/working_dir/
-    sudo ./run_{bench}.sh -k core_type [0->P_core 1->E_core] -t time [Number in seconds] -w workloadArray [{bench}] -c num_cores -f cpu_freq [default=2.50 GHz] s-> selected_workload [{bench}]
+    sudo ./run_{bench}.sh -k core_type [0->P_core 1->E_core] -t time [Number in seconds] -w workloadArray [{bench}] -c num_cores -f cpu_freq [default=3.00 GHz] s-> selected_workload [{bench}]
     ```
-    - This process depends on the include benchmarks used, change the {bench} to the corresponding src/{bench}_benchmarks.h include. Uncomment the selected benchmarks in [src/Instructions_counter_x86_64.c](src/Instructions_counter_x86_64.c) and rebuild the repo.
-        ```
-        //Select only one include for benchmarks to compile with
-        //#include "spec_benchmarks.h"
-        //#include "geekbench_benchmarks.h"
-        //#include "gap_benchmarks.h"
-        ```
 
 [Back to top](#Readme-Content)
 

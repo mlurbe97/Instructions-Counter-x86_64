@@ -41,6 +41,18 @@ endif
 
 CFLAGS+= -I. -D_GNU_SOURCE -pthread
 
+ifeq ($(BENCHES),GEEK_BENCHMARKS)
+CFLAGS+=-DGEEK_BENCHMARKS
+endif
+
+ifeq ($(BENCHES),SPEC_BENCHMARKS)
+CFLAGS+=-DSPEC_BENCHMARKS
+endif
+
+ifeq ($(BENCHES),GAP_BENCHMARKS)
+CFLAGS+=-DGAP_BENCHMARKS
+endif
+
 PERF_EVENT_HDR=$(TOPDIR)/include/perfmon/pfmlib_perf_event.h
 
 LPC_UTILS=perf_util.o
