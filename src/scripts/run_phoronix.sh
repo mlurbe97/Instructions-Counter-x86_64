@@ -8,7 +8,7 @@
 helpFunction()
 {
    echo ""
-   echo "usage: sudo ./run.sh -k core_type [0->P_core 1->E_core] -t time [Number in seconds] -w workloadArray [a->all benches b->custom_workload] -f cpu_freq [default=3000000] s-> selected_workload [0-20]"
+   echo "usage: sudo ./run_phoronix.sh -k core_type [0->P_core 1->E_core] -t time [Number in seconds] -w workloadArray [a->all benches b->custom_workload] -f cpu_freq [default=3000000] s-> selected_workload [0-15]"
    exit 1 # Exit script after printing help
 }
 
@@ -53,25 +53,24 @@ fi
 case "$ARRAY" in 
 
     #case 1 
-    "a") workloadArray="0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20" ;; ## Geekbench5.
-
-    #case 2
+    "a") workloadArray="0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15" ;; ## phoronix benchmarks.
+    #case 4 
     "b") workloadArray=$CUSTOM_APP ;;
 
-    #case 3
+    #case 5
     *) echo "ERROR: Invalid entry for array of benckmarks."
       helpFunction;; 
 esac
 
-OUTDIR=/home/malursem/working_dir/Instructions_counter_x86_64_res/geekbench5/
+OUTDIR=/home/malursem/working_dir/Instructions_counter_x86_64_res/phoronix/
 
 if mkdir $OUTDIR ; then
-   echo "INFO: Directory for geekbench created."
+   echo "INFO: Directory for phoronix created."
 else
-   echo "WARN: Failed to create directory for geekbench. It may already exist."
+   echo "WARN: Failed to create directory for phoronix. It may already exist."
 fi
 
-OUTDIR=/home/malursem/working_dir/Instructions_counter_x86_64_res/geekbench5/$CORE_TYPE/
+OUTDIR=/home/malursem/working_dir/Instructions_counter_x86_64_res/phoronix/$CORE_TYPE/
 
 if mkdir $OUTDIR ; then
    echo "INFO: Directory for core type created."
@@ -79,7 +78,7 @@ else
    echo "WARN: Failed to create directory for core type. It may already exist."
 fi
 
-OUTDIR=/home/malursem/working_dir/Instructions_counter_x86_64_res/geekbench5/$CORE_TYPE/instructions[${TIME}]
+OUTDIR=/home/malursem/working_dir/Instructions_counter_x86_64_res/phoronix/$CORE_TYPE/instructions[${TIME}]
 
 if mkdir $OUTDIR ; then
    echo "INFO: Directory for new results created."
@@ -93,7 +92,7 @@ sudo ./start_experiments.sh -f $CPU_FREQ
 for workload in $workloadArray
 do
    echo "Launching workload number: " $workload
-	sudo ./Instructions_counter_x86_64 -k $CORE_TYPE -t $TIME -A $workload 2>> $OUTDIR/Instructions[${workload}].txt
+	sudo ./Instructions_counter_x86_64 -v -k $CORE_TYPE -t $TIME -A $workload 2>> $OUTDIR/Instructions[${workload}].txt
 done;
 
 sudo ./end_experiments.sh

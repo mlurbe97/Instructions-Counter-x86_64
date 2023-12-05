@@ -8,18 +8,17 @@
 helpFunction()
 {
    echo ""
-   echo "usage: sudo ./run.sh -k core_type [0->P_core 1->E_core] -t time [Number in seconds] -w workloadArray [a->SPEC 2006 b->SPEC 2017 c->SPEC-ALL d->custom_workload] -c num_cores -f cpu_freq [default=3.00 GHz] s-> selected_workload [0-50]"
+   echo "usage: sudo ./run_spec.sh -k core_type [0->P_core 1->E_core] -t time [Number in seconds] -w workloadArray [a->2006 b->2017 c->all benches d->custom_workload] -f cpu_freq [default=3000000] s-> selected_workload [0-25:26-50]"
    exit 1 # Exit script after printing help
 }
 
 # Get the arguments
-while getopts "k:t:w:c:f:s:" opt
+while getopts "k:t:w:f:s:" opt
 do
    case "$opt" in
       k ) CORE_TYPE="$OPTARG" ;;
       t ) TIME="$OPTARG" ;;
       w ) ARRAY="$OPTARG" ;;
-      c ) NUM_CORES="$OPTARG" ;;
       f ) CPU_FREQ="$OPTARG" ;;
       s ) CUSTOM_APP="$OPTARG" ;;
       ? ) helpFunction ;; # Print helpFunction in case parameter is non-existent
@@ -36,23 +35,18 @@ fi
 if [ -z "$CORE_TYPE" ]
 then
     CORE_TYPE="0"
+    echo "WARN: Using default CORE_TYPE=P_core."
 fi
 
 if [ -z "$CPU_FREQ" ]
 then
-    CPU_FREQ="3.00 GHz"
+    CPU_FREQ="3000000"
     echo "WARN: Using default CPU_FREQ=" $CPU_FREQ;
 fi
 
 if [ -z "$CUSTOM_APP" ]
 then
     CUSTOM_APP="0"
-fi
-
-if [ -z "$NUM_CORES" ]
-then
-   NUM_CORES=$(nproc)
-   echo "WARN: Using default NUM_CORES=" $NUM_CORES;
 fi
 
 # Select the array of benckmarks to be executed
@@ -65,7 +59,7 @@ case "$ARRAY" in
     "c") workloadArray="26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50" ;; ## SPEC 2017.
     
     #case 3
-    "d") workloadArray="0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50" ;; ## SPEC 2006 & 2017.
+    "d") workloadArray="0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50" ;; ## All benches.
 
     #case 4
     "f") workloadArray=$CUSTOM_APP ;;
@@ -100,7 +94,7 @@ else
 fi 
 
 # Begin script in case all parameters are correct
-{ sudo ./start_experiments.sh -c $NUM_CORES -f $CPU_FREQ; }
+sudo ./start_experiments.sh -f $CPU_FREQ
 
 export SPECPERLLIB=/home/malursem/spec2017/bin/lib:/home/malursem/spec2017/bin
 
@@ -110,4 +104,4 @@ do
 	sudo ./Instructions_counter_x86_64 -k $CORE_TYPE -t $TIME -A $workload 2>> $OUTDIR/Instructions[${workload}].txt
 done;
 
-{ sudo ./end_experiments.sh -c $NUM_CORES; }
+sudo ./end_experiments.sh

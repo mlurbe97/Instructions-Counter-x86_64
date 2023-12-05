@@ -26,11 +26,13 @@
 
 //Select only one include for benchmarks to compile with
 #ifdef GAP_BENCHMARKS
-  #include "gap_benchmarks.h"
+	#include "gap_benchmarks.h"
 #elifdef GEEK_BENCHMARKS
-  #include "geekbench_benchmarks.h"
+	#include "geekbench_benchmarks.h"
+#elifdef PHORONIX_BENCHMARKS
+	#include "phoronix_benchmarks.h"
 #else // SPEC_BENCHMARKS
-  #include "spec_benchmarks.h"
+	#include "spec_benchmarks.h"
 #endif
 
 // Intel Hybrid

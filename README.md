@@ -189,7 +189,7 @@ This program counts the number of instructions an application executes on a give
     mkdir $HOME/working_dir/benchmarks/
     ```
 
-- Add, modify or delete benchmark and their paths if needed inside the file src/{bench}_benchmarks.h, generate the compile variable definition in build.sh and add the corresponding include in the [Instructions_counter_x86_64.c](src/Instructions_counter_x86_64.c)
+- Add, modify or delete benchmark and their paths if needed inside a description file .h ([src/benchmarks/](src/benchmarks/){bench}_benchmarks.h), generate the compile variable definition in [build.sh](build.sh) and add the corresponding include in the [Instructions_counter_x86_64.c](src/Instructions_counter_x86_64.c)
     ```
     //Select only one include for benchmarks to compile with
     #ifdef GAP_BENCHMARKS

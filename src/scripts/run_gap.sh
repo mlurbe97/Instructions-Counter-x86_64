@@ -8,7 +8,7 @@
 helpFunction()
 {
    echo ""
-   echo "usage: sudo ./run.sh -k core_type [0->P_core 1->E_core] -t time [Number in seconds] -w workloadArray [a->sintetics b->real c->All d->custom_workload] -f cpu_freq [default=3000000] s-> selected_workload [0-26:30-55]"
+   echo "usage: sudo ./run_gap.sh -k core_type [0->P_core 1->E_core] -t time [Number in seconds] -w workloadArray [a->sintetics b->real c->all benches d->custom_workload] -f cpu_freq [default=3000000] s-> selected_workload [0-15:16-45]"
    exit 1 # Exit script after printing help
 }
 
@@ -57,7 +57,7 @@ case "$ARRAY" in
     #case 2 
     "b") workloadArray="16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45" ;; ## GAP benchmarks.
     #case 3
-    "c") workloadArray="0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45" ;; ## All
+    "c") workloadArray="0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45" ;; ## All benches.
     #case 4 
     "d") workloadArray=$CUSTOM_APP ;;
 

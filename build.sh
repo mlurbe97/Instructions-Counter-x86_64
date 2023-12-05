@@ -29,11 +29,11 @@ then
 fi
 
 rm -rf ../libpfm4/perf_examples/Instructions_counter_x86_64*
-dos2unix src/scripts/* src/instructions_to_C_array.py
-chmod +x src/scripts/* src/instructions_to_C_array.py
-cp -rf *src/scripts/* src/instructions_to_C_array.py ../
+dos2unix src/scripts/* src/python/instructions_to_C_array.py
+chmod +x src/scripts/* src/python/instructions_to_C_array.py
+cp -rf *src/scripts/* src/python/instructions_to_C_array.py ../
 
-if cp src/*.h src/Makefile src/Instructions_counter_x86_64.c ../libpfm4/perf_examples/ ; then
+if cp src/*.h src/benchmarks/*.h src/Makefile src/Instructions_counter_x86_64.c ../libpfm4/perf_examples/ ; then
 	if cd ../libpfm4/perf_examples/ ; then
 		if make BENCHES=$BENCHES; then
 			if cp -rf Instructions_counter_x86_64 ../../ ; then
