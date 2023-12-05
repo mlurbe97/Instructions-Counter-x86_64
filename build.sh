@@ -58,3 +58,9 @@ if mkdir $OUTDIR ; then
 else
    echo "WARN: Failed to create directory for results. It may already exist."
 fi
+
+if mkdir rundir/ ; then
+   echo "INFO: Directory rundir created."
+else
+   echo "WARN: Failed to create directory rundir. It may already exist."
+fi
