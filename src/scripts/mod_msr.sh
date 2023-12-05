@@ -8,16 +8,15 @@
 helpFunction()
 {
    echo ""
-   echo "usage: sudo ./mod_msr.sh -c msr_prefetch_conf [default->0xF] -n num_cpus [default->nproc]"
+   echo "usage: sudo ./mod_msr.sh -p msr_prefetch_conf [default->0xF]"
    exit 1 # Exit script after printing help
 }
 
 # Get the arguments
-while getopts "c:n:" opt
+while getopts "p:" opt
 do
    case "$opt" in
-	  c ) CONFIG="$OPTARG" ;;
-     n ) NUM_CORES="$OPTARG" ;;
+      p ) CONFIG="$OPTARG" ;;
       ? ) helpFunction ;; # Print helpFunction in case parameter is non-existent
    esac
 done
@@ -28,11 +27,9 @@ then
    CONFIG="0xF"
 fi
 
-if [ -z "$NUM_CORES" ]
-then
-   NUM_CORES=$(nproc)
-   echo "WARN: Using default NUM_CORES=" $NUM_CORES;
-fi
+
+NUM_CORES=$(nproc)
+
 ONE=1
 let num_procesors=$NUM_CORES-$ONE
 
@@ -44,5 +41,5 @@ sudo modprobe msr
 for cpu in $(seq 0 $num_procesors);
 do
 	sudo wrmsr -p $cpu 0x1a4 $CONFIG
-	echo "Core" $cpu "ready..."
 done
+echo "Prefetch $CONFIG applied on all cpus."

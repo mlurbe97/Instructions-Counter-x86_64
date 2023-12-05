@@ -8,18 +8,17 @@
 helpFunction()
 {
    echo ""
-   echo "usage: sudo ./run.sh -k core_type [0->P_core 1->E_core] -t time [Number in seconds] -w workloadArray [a->All b->custom_workload] -c num_cores -f cpu_freq [default=3.00 GHz] s-> selected_workload [0-26:30-55]"
+   echo "usage: sudo ./run.sh -k core_type [0->P_core 1->E_core] -t time [Number in seconds] -w workloadArray [a->sintetics b->real c->All d->custom_workload] -f cpu_freq [default=3000000] s-> selected_workload [0-26:30-55]"
    exit 1 # Exit script after printing help
 }
 
 # Get the arguments
-while getopts "k:t:w:c:f:s:" opt
+while getopts "k:t:w:f:s:" opt
 do
    case "$opt" in
       k ) CORE_TYPE="$OPTARG" ;;
       t ) TIME="$OPTARG" ;;
       w ) ARRAY="$OPTARG" ;;
-      c ) NUM_CORES="$OPTARG" ;;
       f ) CPU_FREQ="$OPTARG" ;;
       s ) CUSTOM_APP="$OPTARG" ;;
       ? ) helpFunction ;; # Print helpFunction in case parameter is non-existent
@@ -36,11 +35,12 @@ fi
 if [ -z "$CORE_TYPE" ]
 then
     CORE_TYPE="0"
+    echo "WARN: Using default CORE_TYPE=P_core."
 fi
 
 if [ -z "$CPU_FREQ" ]
 then
-    CPU_FREQ="3.00 GHz"
+    CPU_FREQ="3000000"
     echo "WARN: Using default CPU_FREQ=" $CPU_FREQ;
 fi
 
@@ -49,22 +49,19 @@ then
     CUSTOM_APP="0"
 fi
 
-if [ -z "$NUM_CORES" ]
-then
-   NUM_CORES=$(nproc)
-   echo "WARN: Using default NUM_CORES=" $NUM_CORES;
-fi
-
 # Select the array of benckmarks to be executed
 case "$ARRAY" in 
 
     #case 1 
-    "a") workloadArray="0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15" ;; ## GAP benchmarks.
-
+    "a") workloadArray="0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15" ;; ## GAP benchmarks sintetics.
     #case 2 
-    "b") workloadArray=$CUSTOM_APP ;;
-
+    "b") workloadArray="16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45" ;; ## GAP benchmarks.
     #case 3
+    "c") workloadArray="0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45" ;; ## All
+    #case 4 
+    "d") workloadArray=$CUSTOM_APP ;;
+
+    #case 5
     *) echo "ERROR: Invalid entry for array of benckmarks."
       helpFunction;; 
 esac
@@ -94,12 +91,12 @@ else
 fi 
 
 # Begin script in case all parameters are correct
-{ sudo ./start_experiments.sh -c $NUM_CORES -f $CPU_FREQ; }
+sudo ./start_experiments.sh -f $CPU_FREQ
 
 for workload in $workloadArray
 do
    echo "Launching workload number: " $workload
-	sudo ./Instructions_counter_x86_64 -k $CORE_TYPE -t $TIME -A $workload 2>> $OUTDIR/Instructions[${workload}].txt
+	sudo ./Instructions_counter_x86_64 -v -k $CORE_TYPE -t $TIME -A $workload 2>> $OUTDIR/Instructions[${workload}].txt
 done;
 
-{ sudo ./end_experiments.sh -c $NUM_CORES; }
+sudo ./end_experiments.sh

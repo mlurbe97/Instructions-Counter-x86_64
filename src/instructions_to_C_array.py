@@ -23,18 +23,22 @@ workloadArray = arguments[2]
 res_path = arguments[3]
 ini = 0
 fin = 0
-if workloadArray == 'a':
+if workloadArray == 'c':
     print("Selected Benchmarks: GAPS\n")
-    benchmarks = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    benchmarks = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45]
     benchmarksNames = ["bfs_g_24","bfs_u_24","bc_g_24","bc_u_24","cc_g_24","cc_u_24","pr_g_24","pr_u_24",##0--7
-        "sssp_g_24","sssp_u_24","tc_g_24","tc_u_24","cc_sv_g_24","cc_sv_u_24","pr_spmv_g_24","pr_spmv_u_24"]##8--15
-elif workloadArray =='b':
+    "sssp_g_24","sssp_u_24","tc_g_24","tc_u_24","cc_sv_g_24","cc_sv_u_24","pr_spmv_g_24","pr_spmv_u_24",##8--15
+    "bfs-twitter","pr-twitter","cc-twitter","bc-twitter","bfs-web","pr-web","cc-web","bc-web",##16--23
+    "bfs-road","pr-road","cc-road","bc-road","bfs-kron","pr-kron","cc-kron","bc-kron",##24--31
+    "bfs-urand","pr-urand","cc-urand","bc-urand","tc-kron","tc-urand","tc-twitter","tc-web","tc-road",##32--39
+    "sssp-kron","sssp-urand","sssp-twitter","sssp-web","sssp-road"]##41--45
+elif workloadArray =='a':
     print("Selected Benchmarks: Geekbench5\n")
     benchmarks = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
     benchmarksNames = ["AES-XTS","Text Compression","Image Compression","Navigation","HTML5",##0--4
 	    "SQLite","PDF Rendering","Text Rendering","Clang","Camera","N-Body Physics","Rigid Body Physics","Gaussian Blur",##5--12
 	    "Face Detection","Horizon Detection","Image Inpainting","HDR","Ray Tracing","Structure from Motion","Speech Recognition","Machine Learning"]##13--20
-elif workloadArray =='c':
+elif workloadArray =='b':
     print("Selected Benchmarks: SPEC CPU 2006\n")
     benchmarks = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
     benchmarksNames = ["perlbench checkspam","bzip2","gcc","mcf","gobmk","hmmer","sjeng","libquantum",##0--7

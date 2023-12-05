@@ -8,16 +8,15 @@
 helpFunction()
 {
    echo ""
-   echo "usage: sudo ./start_experiments.sh -c num_cores -f cpu_freq"
+   echo "usage: sudo ./start_experiments.sh -f cpu_freq"
    exit 1 # Exit script after printing help
 }
 
 # Get the arguments
-while getopts "c:f:" opt
+while getopts "f:" opt
 do
    case "$opt" in
-	  c ) NUM_CORES="$OPTARG" ;;
-	  f ) CPU_FREQ="$OPTARG" ;;
+      f ) CPU_FREQ="$OPTARG" ;;
       ? ) helpFunction ;; # Print helpFunction in case parameter is non-existent
    esac
 done
@@ -29,24 +28,13 @@ then
    helpFunction
 fi
 
-if [ -z "$NUM_CORES" ]
-then
-   NUM_CORES=$(nproc)
-   echo "WARN: Using default NUM_CORES=" $NUM_CORES;
-fi
+sudo ./enable_perf.sh
+sudo ./mod_msr.sh
 
-{ sudo ./enable_perf.sh ; }
-{ sudo ./mod_msr.sh -n $NUM_CORES; }
+echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor > /dev/null
 
-ONE=1
-let num_procesors=$NUM_CORES-$ONE
-echo "Available cpu cores" $NUM_CORES
-for cpu in $(seq 0 $num_procesors);
-do
-	{ sudo cpufreq-set -g userspace -c $cpu; }
-	echo "Core" $cpu "ready..."
-done;
+echo $CPU_FREQ | tee /sys/devices/system/cpu/cpufreq/policy*/scaling_min_freq > /dev/null
 
-{ sudo cpufreq-set -f $CPU_FREQ; }
+echo $CPU_FREQ | tee /sys/devices/system/cpu/cpufreq/policy*/scaling_max_freq > /dev/null 
 
 echo "CPU Ready..."

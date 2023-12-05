@@ -51,7 +51,7 @@ else
 	echo "ERROR: Failed to copy files."
 fi
 
-cd $HOME/working_dir/
+cd /home/malursem/working_dir/
 OUTDIR=Instructions_counter_x86_64_res/
 if mkdir $OUTDIR ; then
    echo "INFO: Directory for results created."
