@@ -88,23 +88,7 @@ char *benchmarks[NUM_BENCHMARKS][200] = {
   // 20 -> geekbench5 Machine Learning
   {"benchmarks/Geekbench-5.4.4-Linux/geekbench5", "--arch", "64bit", "--section", "1", "--workload", "313", "--no-upload", NULL},
  };
-
-/*************************************************************
- **                   Name of the benchmarks	            **
- *************************************************************/
-
-char *bench_Names [NUM_BENCHMARKS] = {
-	"AES-XTS","Text Compression","Image Compression","Navigation","HTML5",//0--4
-	"SQLite","PDF Rendering","Text Rendering","Clang","Camera","N-Body Physics","Rigid Body Physics","Gaussian Blur",//5--12
-	"Face Detection","Horizon Detection","Image Inpainting","HDR","Ray Tracing","Structure from Motion","Speech Recognition","Machine Learning"//13--20
-};
-
-char *bench_Names_complete [NUM_BENCHMARKS] = {
-	"AES-XTS","Text Compression","Image Compression","Navigation","HTML5",//0--4
-	"SQLite","PDF Rendering","Text Rendering","Clang","Camera","N-Body Physics","Rigid Body Physics","Gaussian Blur",//5--12
-	"Face Detection","Horizon Detection","Image Inpainting","HDR","Ray Tracing","Structure from Motion","Speech Recognition","Machine Learning"//13--20
-};
-
+ 
 /*************************************************************
  **                 search_benchmark                        **
  *************************************************************/

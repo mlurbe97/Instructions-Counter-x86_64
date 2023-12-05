@@ -111,7 +111,7 @@ char *benchmarks[NUM_BENCHMARKS][200] = {
 	// 31 -> x264_r
 	{"benchmarks/spec2017-x86-bin/benchspec/CPU/525.x264_r/exe/x264_r_base.InitialTest-m64", "--pass", "1", "--stats", "x264_stats.log", "--bitrate", "1000", "--frames", "1000", "-o", "benchmarks/spec2017-x86-bin/benchspec/CPU/625.x264_s/BuckBunny_New.264", "benchmarks/spec2017-x86-bin/benchspec/CPU/625.x264_s/BuckBunny.yuv", "1280x720", NULL},
 	// 32 -> deepsjeng_r
-	{"benchmarks/spec2017-x86-bin/benchspec/CPU/538.imagick_r/exe/imagick_r_base.InitialTest-m64", "benchmarks/spec2017-x86-bin/benchspec/CPU/531.deepsjeng_r/ref.txt", NULL},
+	{"benchmarks/spec2017-x86-bin/benchspec/CPU/531.deepsjeng_r/exe/deepsjeng_r_base.InitialTest-m64", "benchmarks/spec2017-x86-bin/benchspec/CPU/531.deepsjeng_r/ref.txt", NULL},
 	// 33 -> leela_r
 	{"benchmarks/spec2017-x86-bin/benchspec/CPU/541.leela_r/exe/leela_r_base.InitialTest-m64", "benchmarks/spec2017-x86-bin/benchspec/CPU/641.leela_s/ref.sgf", NULL},
 	// 34 -> exchange2_r
@@ -148,32 +148,6 @@ char *benchmarks[NUM_BENCHMARKS][200] = {
 	{"benchmarks/spec2017-x86-bin/benchspec/CPU/548.exchange2_r/exe/exchange2_r_base.InitialTest-m64","6",NULL},
 	// 50 -> perlbench_r diffmail
 	{"benchmarks/spec2017-x86-bin/benchspec/CPU/500.perlbench_r/exe/perlbench_r_base.InitialTest-m64", "-Ispec2017-x86-bin/benchspec/CPU/500.perlbench_r/lib", "benchmarks/spec2017-x86-bin/benchspec/CPU/500.perlbench_r/diffmail.pl", "4", "800", "10", "17", "19", "300", NULL},
-};
-
-/*************************************************************
- **                   Name of the benchmarks	            **
- *************************************************************/
-
-char *bench_Names [NUM_BENCHMARKS] = {
-	"perlbench checkspam","bzip2","gcc","mcf","gobmk","hmmer","sjeng","libquantum",//0--7
-	"h264ref","omnetpp","astar","xalancbmk","bwaves","gamess","milc","zeusmp",//8--15
-	"gromacs","cactusADM","leslie3d","namd","soplex","povray","GemsFDTD",//16--22
-	"lbm","perlbench diffmail","calculix","perlbench_r checkspam","gcc_r",//23--27
-  "mcf_r","omnetpp_r","xalancbmk_r","x264_r","deepsjeng_r","leela_r",//28--33
-  "exchange2_r","xz_r 1","bwaves_r","cactuBSSN_r","lbm_r","wrf_r","imagick_r",//34--40
-  "nab_r","fotonik3d_r","roms_r","namd_r","parest_r","povray_r","xz_r 2",//41--47
-  "xz_r 3","exchange2_r","perlbench_r diffmail"//48--50
-};
-
-char *bench_Names_complete [NUM_BENCHMARKS] = {
-	"perlbench checkspam","bzip2","gcc","mcf","gobmk","hmmer","sjeng","libquantum",//0--7
-	"h264ref","omnetpp","astar","xalancbmk","bwaves","gamess","milc","zeusmp",//8--15
-	"gromacs","cactusADM","leslie3d","namd","soplex","povray","GemsFDTD",//16--22
-	"lbm","perlbench diffmail","calculix","perlbench_r checkspam","gcc_r",//23--27
-  "mcf_r","omnetpp_r","xalancbmk_r","x264_r","deepsjeng_r","leela_r",//28--33
-  "exchange2_r","xz_r 1","bwaves_r","cactuBSSN_r","lbm_r","wrf_r","imagick_r",//34--40
-  "nab_r","fotonik3d_r","roms_r","namd_r","parest_r","povray_r","xz_r 2",//41--47
-  "xz_r 3","exchange2_r","perlbench_r diffmail"//48--50
 };
 
 /*************************************************************

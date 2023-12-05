@@ -37,7 +37,7 @@
  **                   Defines                               **
  *************************************************************/
 
-#define NUM_BENCHMARKS 46 // Number of available benchmarks.
+#define NUM_BENCHMARKS 46 // Number of available benchmarks. 0-45
 
 /*************************************************************
  **                   Benchmarks SPEC2006-2017              **
@@ -155,28 +155,6 @@ char *benchmarks[NUM_BENCHMARKS][200] = {
     // 45 -> sssp road
     {"benchmarks/gapbs/sssp", "-f", "benchmarks/gapbs/benchmark/graphs/road.wsg", "-n64", "-d50000", ">", "benchmarks/gapbs/benchmark/out/sssp-road.out",NULL},
 };  
-
-/*************************************************************
- **                   Name of the benchmarks	            **
- *************************************************************/
-
-char *bench_Names [NUM_BENCHMARKS] = {
-	"bfs","bfs","bc","bc","cc","cc","pr","pr",//0--7
-    "sssp","sssp","tc","tc","cc_sv","cc_sv","pr_spmv","pr_spmv",//8--15
-    "bfs","pr","cc","bc","bfs","pr","cc","bc",//16--23
-    "bfs","pr","cc","bc","bfs","pr","cc","bc",//24--31
-    "bfs","pr","cc","bc","tc","tc","tc","tc","tc",//32--40
-    "sssp","sssp","sssp","sssp","sssp"//41--45
-};
-
-char *bench_Names_complete [NUM_BENCHMARKS] = {
-	"bfs_g_24","bfs_u_24","bc_g_24","bc_u_24","cc_g_24","cc_u_24","pr_g_24","pr_u_24",//0--7
-    "sssp_g_24","sssp_u_24","tc_g_24","tc_u_24","cc_sv_g_24","cc_sv_u_24","pr_spmv_g_24","pr_spmv_u_24",//8--15
-    "bfs-twitter","pr-twitter","cc-twitter","bc-twitter","bfs-web","pr-web","cc-web","bc-web",//16--23
-    "bfs-road","pr-road","cc-road","bc-road","bfs-kron","pr-kron","cc-kron","bc-kron",//24--31
-    "bfs-urand","pr-urand","cc-urand","bc-urand","tc-kron","tc-urand","tc-twitter","tc-web","tc-road",//32--39
-    "sssp-kron","sssp-urand","sssp-twitter","sssp-web","sssp-road"//41--45
-};
 
 /*************************************************************
  **                 search_benchmark                        **

@@ -8,7 +8,7 @@
 helpFunction()
 {
    echo ""
-   echo "usage: sudo ./build.sh -b benches [GAP_BENCHMARKS, GEEK_BENCHMARKS or SPEC_BENCHMARKS]"
+   echo "usage: sudo ./build.sh -b benches [GAP_BENCHMARKS, GEEK_BENCHMARKS, SPEC_BENCHMARKS or PHORONIX_BENCHMARKS]"
    exit 1 # Exit script after printing help
 }
 
