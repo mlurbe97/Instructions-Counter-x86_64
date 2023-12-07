@@ -56,13 +56,13 @@ case "$ARRAY" in
     "a") workloadArray="0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25" ;; ## SPEC 2006.
     
     #case 2 
-    "c") workloadArray="26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50" ;; ## SPEC 2017.
+    "b") workloadArray="26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50" ;; ## SPEC 2017.
     
     #case 3
-    "d") workloadArray="0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50" ;; ## All benches.
+    "c") workloadArray="0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50" ;; ## All benches.
 
     #case 4
-    "f") workloadArray=$CUSTOM_APP ;;
+    "d") workloadArray=$CUSTOM_APP ;;
 
     #case 5
     *) echo "ERROR: Invalid entry for array of benckmarks."
@@ -96,7 +96,7 @@ fi
 # Begin script in case all parameters are correct
 sudo ./start_experiments.sh -f $CPU_FREQ
 
-export SPECPERLLIB=/home/malursem/spec2017/bin/lib:/home/malursem/spec2017/bin
+export SPECPERLLIB=/home/malursem/working_dir/benchmarks/spec2017-x86-bin/bin/lib/:/home/malursem/working_dir/benchmarks/spec2017-x86-bin/bin/
 
 for workload in $workloadArray
 do
