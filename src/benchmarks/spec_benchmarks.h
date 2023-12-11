@@ -46,7 +46,7 @@
 char *benchmarks[NUM_BENCHMARKS][200] = {
   //* SPEC CPU 2006 *//
   // 0 -> perlbench checkspam
-  {"benchmarks/spec2006-x86-bin/400.perlbench/perlbench_base.i386", "-ICPU2006/400.perlbench/data/all/input/lib", "benchmarks/CPU2006/400.perlbench/data/ref/input/checkspam.pl", "2500", "5", "11", "150", "1", "1", "1", "1", ">", "benchmarks/CPU2006/400.perlbench/data/ref/output/checkspam.2500.5.25.11.150.1.1.1.1.out", NULL},
+  {"benchmarks/spec2006-x86-bin/400.perlbench/perlbench_base.i386", "-Ibenchmarks/CPU2006/400.perlbench/data/all/input/lib", "benchmarks/CPU2006/400.perlbench/data/ref/input/checkspam.in", "2500", "5", "11", "150", "1", "1", "1", "1", ">", "benchmarks/CPU2006/400.perlbench/data/ref/output/checkspam.2500.5.25.11.150.1.1.1.1.out", NULL},
   // 1 -> bzip2
   {"benchmarks/spec2006-x86-bin/401.bzip2/bzip2_base.i386", "benchmarks/CPU2006/401.bzip2/data/all/input/input.combined", "200", NULL},
   // 2 -> gcc
@@ -99,7 +99,7 @@ char *benchmarks[NUM_BENCHMARKS][200] = {
   {"benchmarks/spec2006-x86-bin/454.calculix/calculix_base.i386", "-i", "benchmarks/CPU2006/454.calculix/data/ref/input/hyperviscoplastic", NULL},
   //* SPEC CPU 2017 *//
 	// 26 -> perlbench_r checkspam
-	{"benchmarks/spec2017-x86-bin/benchspec/CPU/500.perlbench_r/exe/perlbench_r_base.InitialTest-m64", "-Ispec2017-x86-bin/bin/lib", "benchmarks/spec2017-x86-bin/benchspec/CPU/500.perlbench_r/data/all/input/checkspam.pl", "2500", "5", "25", "11", "150", "1", "1", "1", "1", NULL},
+	{"benchmarks/spec2017-x86-bin/benchspec/CPU/500.perlbench_r/exe/perlbench_r_base.InitialTest-m64", "-Ibenchmarks/spec2017-x86-bin/bin/lib", "benchmarks/spec2017-x86-bin/benchspec/CPU/500.perlbench_r/data/all/input/checkspam.pl", "2500", "5", "25", "11", "150", "1", "1", "1", "1", NULL},
 	// 27 -> gcc_r
 	{"benchmarks/spec2017-x86-bin/benchspec/CPU/502.gcc_r/exe/cpugcc_r_base.InitialTest-m64", "benchmarks/spec2017-x86-bin/benchspec/CPU/502.gcc_r/data/refrate/input/gcc-smaller.c", "-O3", "-fipa-pta", "-o", "gcc-smaller.opts-O3_-fipa-pta.s", NULL},
 	// 28 -> mcf_r
@@ -111,7 +111,7 @@ char *benchmarks[NUM_BENCHMARKS][200] = {
 	// 31 -> x264_r
 	{"benchmarks/spec2017-x86-bin/benchspec/CPU/525.x264_r/exe/x264_r_base.InitialTest-m64", "--pass", "1", "--stats", "x264_stats.log", "--bitrate", "1000", "--frames", "1000", "-o", "benchmarks/spec2017-x86-bin/benchspec/CPU/625.x264_s/BuckBunny_New.264", "benchmarks/spec2017-x86-bin/benchspec/CPU/625.x264_s/BuckBunny.yuv", "1280x720", NULL},
 	// 32 -> deepsjeng_r
-	{"benchmarks/spec2017-x86-bin/benchspec/CPU/531.deepsjeng_r/exe/deepsjeng_r_base.InitialTest-m64", "benchmarks/spec2017-x86-bin/benchspec/CPU/531.deepsjeng_r/ref.txt", NULL},
+	{"benchmarks/spec2017-x86-bin/benchspec/CPU/531.deepsjeng_r/exe/deepsjeng_r_base.InitialTest-m64", "benchmarks/CPU2017/531.deepsjeng_r/ref.txt", NULL},
 	// 33 -> leela_r
 	{"benchmarks/spec2017-x86-bin/benchspec/CPU/541.leela_r/exe/leela_r_base.InitialTest-m64", "benchmarks/spec2017-x86-bin/benchspec/CPU/641.leela_s/ref.sgf", NULL},
 	// 34 -> exchange2_r
@@ -147,7 +147,7 @@ char *benchmarks[NUM_BENCHMARKS][200] = {
 	// 49 -> exchange2_r
 	{"benchmarks/spec2017-x86-bin/benchspec/CPU/548.exchange2_r/exe/exchange2_r_base.InitialTest-m64","6",NULL},
 	// 50 -> perlbench_r diffmail
-	{"benchmarks/spec2017-x86-bin/benchspec/CPU/500.perlbench_r/exe/perlbench_r_base.InitialTest-m64", "-Ispec2017-x86-bin/benchspec/CPU/500.perlbench_r/lib", "benchmarks/spec2017-x86-bin/benchspec/CPU/500.perlbench_r/diffmail.pl", "4", "800", "10", "17", "19", "300", NULL},
+	{"benchmarks/spec2017-x86-bin/benchspec/CPU/500.perlbench_r/exe/perlbench_r_base.InitialTest-m64", "-Ibenchmarks/spec2017-x86-bin/benchspec/CPU/500.perlbench_r/lib", "benchmarks/spec2017-x86-bin/benchspec/CPU/500.perlbench_r/diffmail.pl", "4", "800", "10", "17", "19", "300", NULL},
 };
 
 /*************************************************************

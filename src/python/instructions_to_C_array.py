@@ -38,6 +38,7 @@ if workloadArray == 'a':
         "bfs","pr","cc","bc","bfs","pr","cc","bc",##24--31
         "bfs","pr","cc","bc","tc","tc","tc","tc","tc",##32--39
         "sssp","sssp","sssp","sssp","sssp"]##41--45
+    out_name = "gaps"
 elif workloadArray =='b':
     print("Selected Benchmarks: Geekbench5\n")
     benchmarks = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
@@ -47,6 +48,7 @@ elif workloadArray =='b':
     benchmarksNames = ["geekbench5","geekbench5","geekbench5","geekbench5","geekbench5",##0--4
 	    "geekbench5","geekbench5","geekbench5","geekbench5","geekbench5","geekbench5","geekbench5","geekbench5",##5--12
 	    "geekbench5","geekbench5","geekbench5","geekbench5","geekbench5","geekbench5","geekbench5","geekbench5"]##13--20
+    out_name = "geekbench"
 elif workloadArray =='c':
     print("Selected Benchmarks: SPEC CPU 2006\n")
     benchmarks = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
@@ -66,6 +68,7 @@ elif workloadArray =='c':
         "exchange2_r","xz_r 1","bwaves_r","cactuBSSN_r","lbm_r","wrf_r","imagick_r",##34--40
         "nab_r","fotonik3d_r","roms_r","namd_r","parest_r","povray_r","xz_r 2",##41--47
         "xz_r 3","exchange2_r","perlbench_r diffmail"]##48--50
+    out_name = "spec"
 elif workloadArray =='d':
     print("Selected Benchmarks: Phoronix\n")
     benchmarks = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
@@ -73,6 +76,7 @@ elif workloadArray =='d':
         "h264ref","omnetpp","astar","xalancbmk","bwaves","gamess","milc","zeusmp"]##8--15
     benchmarksNamesComplete = ["perlbench checkspam","bzip2","gcc","mcf","gobmk","hmmer","sjeng","libquantum",##0--7
         "h264ref","omnetpp","astar","xalancbmk","bwaves","gamess","milc","zeusmp"]##8--15
+    out_name = "phoronix"
 else:
     print("Array value incorrect.")
     sys.exit(1)
@@ -95,17 +99,17 @@ for bench in benchmarks:
         print("Error with benchmark number: "+str(bench)+"\nCan't find the file\n")
         listaInstructions.append(str(0))
 
-escribir_array = open("array["+time+"].txt","w")
-escribir_names = open("array_names["+time+"].txt","w")
-escribir_names_complete = open("array_names_complete["+time+"].txt","w")
+escribir_array = open("array["+time+"]_"+out_name+".txt","w")
+escribir_names = open("array_names["+time+"]_"+out_name+".txt","w")
+escribir_names_complete = open("array_names_complete["+time+"]_"+out_name+".txt","w")
 escribir_array.write("unsigned long int bench_Instructions [NUM_BENCHMARKS] = {\n\t")
 escribir_names.write("char *bench_Names [NUM_BENCHMARKS] = {\n\t")
 escribir_names_complete.write("char *bench_Names_complete [NUM_BENCHMARKS] = {\n\t")
 
-not_working = open("not_working["+time+"].txt","w")
+not_working = open("not_working["+time+"]_"+out_name+".txt","w")
 not_working.write("Benchmarks not working\n")
 
-working = open("working["+time+"].txt","w")
+working = open("working["+time+"]_"+out_name+".txt","w")
 working.write("Benchmarks working\n")
 
 print(str(len(listaInstructions)))
